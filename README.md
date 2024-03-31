@@ -1,5 +1,5 @@
 # Movie Analytics Dashboard
-https://movies-dashboard-djs7e7rk2lysgjewfdvgj7.streamlit.app/
+https://movies-dashboard.streamlit.app/
 
 Welcome to the Movie Analytics Dashboard! This Streamlit dashboard project allows users to explore movie data, filter movies by various criteria, and gain insights into the movie industry.
 

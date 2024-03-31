@@ -1,5 +1,5 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
 import matplotlib.pyplot as plt
 import plotly.express as px
 
@@ -111,9 +111,12 @@ avg_budget_company = avg_budget_company.sort_values(by='budget', ascending=False
 fig4 = px.bar(avg_budget_company, x='company', y='budget', title=f'Top {num_companies} Companies by Average Budget', color='company')
 st.plotly_chart(fig4)
 
-# Visualization 5 - Bar chart for movie count by director (customizable)
-st.header("Movie Count by Director")
-director_movie_count = movies_data['director'].value_counts().reset_index().rename(columns={'index': 'director', 'director': 'count'})
-director_movie_count = director_movie_count.sort_values(by='count', ascending=False).head(num_directors)
-fig5 = px.bar(director_movie_count, x='director', y='count', title=f'Top {num_directors} Directors by Movie Count', color='director')
+# Visualization 5 - Bar chart for top directors by number of movies (customizable)
+st.header("Top Directors by Number of Movies")
+director_counts = movies_data['director'].value_counts().head(num_directors)
+# Choose a dark color palette for the bar chart
+colors = px.colors.qualitative.Dark24
+fig5 = px.bar(director_counts, x=director_counts.index, y=director_counts.values, title=f'Top {num_directors} Directors by Number of Movies',
+              color=director_counts.index, color_discrete_sequence=colors)
+fig5.update_layout(xaxis_title="Director", yaxis_title="Number of Movies", xaxis_tickangle=-45)
 st.plotly_chart(fig5)
